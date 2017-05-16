@@ -1,7 +1,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 
-module.exports = {
+// 后端服务器地址前缀，在`config.dev.mock`为`false`的情况下，
+// 以此前缀开头的请求全部转发至指定服务器`targetUrl`
+const apiPrefix = '/api';
+// 后端服务器, 域名或者都可以
+// eg: http://192.168.71.26:9082
+const targetUrl = 'http://45.32.79.142:3000';
+
+var config = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
@@ -27,21 +34,30 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/mcrm/api': {
-        target: 'http://192.168.71.29:9082',
-        secure: false
-      }
-    },
+    // mock转发配置项
+    proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
     cssSourceMap: false,
-    mock: true
+    // mock开关
+    mock: true,
   },
+  // api前缀
+  apiPrefix: apiPrefix,
+  // css模块化
   cssModules: true,
   appSrc: path.resolve(__dirname, '../src'),
   appNodeModules: path.resolve(__dirname, '../node_modules')
-}
+};
+
+// 转发配置
+config.dev.proxyTable[apiPrefix] = {
+  target: targetUrl,
+  secure: false
+};
+
+module.exports = config;
+

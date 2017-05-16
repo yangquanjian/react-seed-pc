@@ -1,5 +1,6 @@
 var path = require('path');
 var express = require('express')
+var config = require('../config')
 
 var Router = express.Router
 var router = Router();
@@ -30,7 +31,7 @@ function mockMiddleware(options) {
     var whitelist = options.whitelist || {};
 
     function localMapping(reqPath) {
-        return reqPath.replace(/^\/api/, '');
+        return reqPath.replace(new RegExp('^' + config.apiPrefix), '');
     }
 
     function resolveMockFilePath(reqPath) {
@@ -99,7 +100,7 @@ function mockMiddleware(options) {
 }
 
 var middleware = mockMiddleware({
-    whitelist: [/^\/?\/api/],
+    whitelist: [new RegExp('^' + config.apiPrefix)],
     mockFilePath: path.join(__dirname, '..')
 });
 

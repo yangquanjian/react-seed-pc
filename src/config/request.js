@@ -4,7 +4,9 @@
  * @author maoquan(maoquan@htsc.com)
  */
 
+import buildConfig from '../../config';
+
 export default {
   timeout: 15000,
-  prefix: '/api',
+  prefix: buildConfig.apiPrefix,
 };

@@ -62,17 +62,15 @@ javascript规范主要参考[airbnb规范](https://github.com/airbnb/javascript)
 mockup相关配置在`config/index.js`中:
 
 ```
-    /**
-     * `/mcrm/api` 后端接口前缀
-     * `target` 后端服务器地址
-     */
-    proxyTable: {
-        '/mcrm/api': {
-          target: 'http://192.168.71.29:9082',
-          secure: false
-        }
-    },
-    mock: false, // mock开关, true表示不访问远程服务器，使用本地mockup目录数据进行开发
+// 后端服务器地址前缀，在`config.dev.mock`为`false`的情况下，
+// 以此前缀开头的请求全部转发至指定服务器`targetUrl`
+const apiPrefix = '/api';
+// 后端服务器, 域名或者都可以
+// eg: http://192.168.71.26:9082
+const targetUrl = 'http://45.32.79.142:3000';
+
+// mock开关, true表示不访问远程服务器，使用本地mockup目录数据进行开发
+config.dev.mock: false
   
 ```
 

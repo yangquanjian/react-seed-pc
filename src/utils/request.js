@@ -16,19 +16,12 @@ import config from '../config/request';
  */
 function parseJSON(response) {
   return response.json().then(
-    (res) => {
-      // 神策的响应是succeed: true
-      const { code, msg, succeed } = res;
-      if (code !== '0' && !succeed) {
-        let error;
-        if (code === 'MAG0010') {
-          // 这里使用code作为message，以便对登录错误做特殊处理
-          error = new Error(code);
-        } else {
-          error = new Error(msg);
-        }
-        throw error;
-      }
+    (res) => { // eslint-disable-line
+      // 这里可以对响应进行统一判断
+      // 然后throw出错误信息
+      // eg: if (res.code !== '0') {
+      //        throw res.message;
+      //     }
       return res;
     },
   );

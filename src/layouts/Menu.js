@@ -86,9 +86,13 @@ Menus.propTypes = {
   siderFold: PropTypes.bool.isRequired,
   darkTheme: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
-  handleClickNavMenu: PropTypes.func.isRequired,
+  handleClickNavMenu: PropTypes.func,
   navOpenKeys: PropTypes.array.isRequired,
   changeOpenKeys: PropTypes.func.isRequired,
+};
+
+Menus.defaultProps = {
+  handleClickNavMenu: () => {},
 };
 
 export default Menus;

@@ -73,15 +73,15 @@ export default class TestDetail extends PureComponent {
 
         <FormItem
           {...FORM_ITEM_LAYOUT}
-          label="钱"
+          label="邮件"
         >
           {getFieldDecorator(
-            'money',
+            'email',
             {
-              initialValue: data.money,
+              initialValue: data.email,
               rules: [
                 {
-                  required: true, message: '钱不能为空',
+                  required: true, message: 'Email不能为空',
                 },
               ],
             },

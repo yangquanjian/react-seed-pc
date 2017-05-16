@@ -9,21 +9,21 @@ import { Link } from 'dva/router';
 const columns = [
   {
     title: '姓名',
-    dataIndex: 'id',
-    key: 'id',
-    render: (id, item) => (
-      <Link to={`/example/detail/${id}`}>{item.name}</Link>
+    dataIndex: 'name',
+    key: 'name',
+    render: (name, item) => (
+      <Link to={`/example/detail/${item.id}`}>{item.name}</Link>
     ),
   },
   {
-    title: '账户余额',
-    dataIndex: 'money',
-    key: 'money',
+    title: '用户名',
+    dataIndex: 'username',
+    key: 'username',
   },
   {
-    title: '日期',
-    dataIndex: 'date',
-    key: 'date',
+    title: 'Email',
+    dataIndex: 'email',
+    key: 'email',
   },
   {
     title: '操作',

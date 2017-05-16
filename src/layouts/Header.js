@@ -7,7 +7,7 @@ import styles from './header.less';
 const SubMenu = Menu.SubMenu;
 
 function Header({
-  user = { name: '测试用户' },
+  user,
   logout,
   switchSider,
   siderFold,
@@ -73,7 +73,7 @@ function Header({
 }
 
 Header.propTypes = {
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   logout: PropTypes.func.isRequired,
   switchSider: PropTypes.func.isRequired,
   siderFold: PropTypes.bool.isRequired,
@@ -83,6 +83,10 @@ Header.propTypes = {
   switchMenuPopover: PropTypes.func.isRequired,
   navOpenKeys: PropTypes.array.isRequired,
   changeOpenKeys: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  user: { name: '测试用户' },
 };
 
 export default Header;

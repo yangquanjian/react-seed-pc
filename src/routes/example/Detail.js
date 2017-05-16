@@ -5,7 +5,8 @@
  */
 
 import React, { PropTypes, PureComponent } from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'dva';
+import { withRouter } from 'dva/router';
 
 import Info from '../../components/example/Info';
 
@@ -25,12 +26,14 @@ const mapDispatchToProps = {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 export default class Profile extends PureComponent {
 
   static propTypes = {
     getDetail: PropTypes.func.isRequired,
     detail: PropTypes.object,
     save: PropTypes.func.isRequired,
+    routeParams: PropTypes.object.isRequired,
   }
 
   static defaultProps = {
@@ -38,7 +41,8 @@ export default class Profile extends PureComponent {
   }
 
   componentWillMount() {
-    this.props.getDetail();
+    const { routeParams: { id } } = this.props;
+    this.props.getDetail({ id });
   }
 
   render() {
