@@ -14,7 +14,7 @@
     ├── layouts            # 布局组件，app整体框架组件，一般不随路由变动而变动
     ├── models             # dva models, 所有redux配置都在这里
     ├── theme              # 全局样式定义
-    ├── views              # 页面文件, 也叫做路由文件
+    ├── routes             # 页面文件, 也叫做路由文件
     └── utils              # Utils
     └── app.js             # 项目入口文件
     └── router.js          # 路径配置文件
