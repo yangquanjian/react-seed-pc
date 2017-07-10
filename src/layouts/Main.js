@@ -13,7 +13,6 @@ import Loading from '../components/common/Loading';
 import { constants } from '../config';
 
 import Header from './Header';
-import Bread from './Bread';
 import Footer from './Footer';
 import Sider from './Sider';
 
@@ -135,7 +134,6 @@ export default class Main extends Component {
           }
           <div className={styles.main}>
             <Header {...headerProps} />
-            <Bread location={location} />
             <div className={styles.container}>
               <div className={styles.content}>
                 <Loading loading={loading} />
