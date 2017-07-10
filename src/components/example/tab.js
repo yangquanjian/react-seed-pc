@@ -18,6 +18,7 @@ export default class Tab extends Component {
     location: PropTypes.object.isRequired,
     push: PropTypes.func.isRequired,
   }
+
   constructor(props) {
     super(props);
     this.ifchangeActivity = false;
@@ -26,44 +27,40 @@ export default class Tab extends Component {
       panes: [],
     };
   }
-    @autobind
+
+  @autobind
   onChange(activeKey) {
     const { push } = this.props;
-    this.state.panes.forEach((v) => {
-      if (v.key === activeKey) {
-        const value = v.value;
-        const url = tabConfig[value].url;
-        push({ pathname: url });
-      }
-    });
+    const activePane = this.state.panes.find(v => v.key === activeKey);
+    const value = activePane.value;
+    const url = tabConfig[value].url;
+    push({ pathname: url });
   }
 
 
-    @autobind
+  @autobind
   onEdit(targetKey, action) {
     this[action](targetKey);
   }
-    @autobind
+
+  @autobind
   remove(targetKey) {
     const { push } = this.props;
-    let lastIndex;
-    this.state.panes.forEach((pane, i) => {
-      if (pane.key === targetKey) {
-        lastIndex = i - 1;
-      }
-    });
     const panes = this.state.panes.filter(pane => pane.key !== targetKey);
+    const lastIndex = panes.length - 1;
     const value = panes[lastIndex].value;
     const url = tabConfig[value].url;
     const activityKey = panes[lastIndex].key;
     push({ pathname: url });
     this.setState({ panes, activityKey });
   }
+
   renderTabPane(pane) {
     return (
       <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>{pane.content} </TabPane>
     );
   }
+
   render() {
     const children = this.props.children;
     const panthnameArray = this.props.location.pathname.split('/');
