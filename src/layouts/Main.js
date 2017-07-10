@@ -4,7 +4,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { withRouter } from 'dva/router';
+import { withRouter, routerRedux } from 'dva/router';
 import { connect } from 'dva';
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
@@ -19,6 +19,7 @@ import Sider from './Sider';
 
 import styles from './main.less';
 import '../css/skin.less';
+import Tab from '../components/example/tab';
 
 const mapStateToProps = state => ({
   ...state.app,
@@ -26,6 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  push: routerRedux.push,
   switchMenuPopover: () => ({
     type: 'app/switchMenuPopover',
   }),
@@ -61,6 +63,7 @@ export default class Main extends Component {
     switchSider: PropTypes.func.isRequired,
     changeOpenKeys: PropTypes.func.isRequired,
     changeTheme: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -68,7 +71,6 @@ export default class Main extends Component {
 
   render() {
     const {
-      children,
       location,
       siderFold,
       darkTheme,
@@ -137,7 +139,7 @@ export default class Main extends Component {
             <div className={styles.container}>
               <div className={styles.content}>
                 <Loading loading={loading} />
-                {children}
+                {<Tab {...this.props} />}
               </div>
             </div>
             <Footer />
