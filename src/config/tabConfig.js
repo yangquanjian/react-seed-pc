@@ -31,5 +31,6 @@ const tabConfig = {
     url: '/Menu2/menu22',
   },
 
+
 };
 export default tabConfig;
