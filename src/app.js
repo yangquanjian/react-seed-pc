@@ -4,6 +4,7 @@
  */
 
 import dva from 'dva';
+import 'babel-polyfill';
 import { browserHistory } from 'dva/router';
 import createLoading from 'dva-loading';
 import createLogger from 'redux-logger';
