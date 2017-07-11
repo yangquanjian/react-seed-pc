@@ -66,16 +66,23 @@ export default class Tab extends Component {
     const panthnameArray = this.props.location.pathname.split('/');
     const length = panthnameArray.length;
     const currentKey = panthnameArray[length - 1];
-    const keys = tabConfig[currentKey].key;
-    const title = tabConfig[currentKey].title;
-    const value = tabConfig[currentKey].value;
-    if (this.state.panes.length === 0) {
-      this.state.panes.push({ title, content: children, key: keys, value, closable: false });
-    } else if (!this.state.panes.find(v => v.value === value)) {
-      this.state.panes.push({ title, content: children, key: keys, value });
+    if (tabConfig[currentKey] != null) {
+      const keys = tabConfig[currentKey].key;
+      const title = tabConfig[currentKey].title;
+      const value = tabConfig[currentKey].value;
+      if (this.state.panes.length === 0) {
+        this.state.panes.push({ title, content: children, key: keys, value, closable: false });
+      } else if (!this.state.panes.find(v => v.value === value)) {
+        this.state.panes.push({ title, content: children, key: keys, value });
+      } else if (this.state.panes.find(v => v.value === value)) {
+        const index = this.state.panes.findIndex(v => v.value === value);
+        this.state.panes[index].content = children;
+      }
+      this.state.activeKey = keys;
+    } else {
+      const index = this.state.panes.findIndex(v => v.key === this.state.activeKey);
+      this.state.panes[index].content = children;
     }
-    this.state.activeKey = keys;
-
 
     return (
       <div>
