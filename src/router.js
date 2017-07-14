@@ -16,6 +16,9 @@ import Main from './layouts/Main';
 import Test from './routes/example/Home';
 import TestDetail from './routes/example/Detail';
 import Page from './routes/example/Page';
+import lineCharts from './routes/example/LineCharts';
+import BarCharts from './routes/example/BarCharts';
+import PieCharts from './routes/example/PieCharts';
 
 
 const routes = ({ history }) => (// eslint-disable-line
@@ -29,6 +32,11 @@ const routes = ({ history }) => (// eslint-disable-line
       {/** 侧栏测试 */}
       <Route path="menu:id" component={Page}>
         <Route path="menu:id" component={Page} />
+      </Route>
+      <Route path="charts">
+        <Route path="charts1" components={lineCharts} />
+        <Route path="charts2" components={BarCharts} />
+        <Route path="charts3" components={PieCharts} />
       </Route>
     </Route>
   </Router>

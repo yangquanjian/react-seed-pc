@@ -28,7 +28,25 @@ const tabConfig = {
     key: '4',
     value: 'menu22',
     title: '子菜单2',
-    url: '/Menu2/menu22',
+    url: '/menu2/menu22',
+  },
+  charts1: {
+    key: '5',
+    value: 'charts1',
+    title: '折线图',
+    url: '/charts/charts1',
+  },
+  charts2: {
+    key: '6',
+    value: 'charts2',
+    title: '柱状图',
+    url: '/charts/charts2',
+  },
+  charts3: {
+    key: '7',
+    value: 'charts3',
+    title: '饼图',
+    url: '/charts/charts3',
   },
 
 

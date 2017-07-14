@@ -6,16 +6,15 @@
 
 import React, { PropTypes, PureComponent, cloneElement } from 'react';
 // 按需引入组件, 保证代码最小
-import echarts from 'echarts/lib/echarts';
+import echarts from 'echarts';
 import _ from 'lodash';
-// import elementResizeEvent from 'element-resize-event';
 
 export default class Charts extends PureComponent {
   /* eslint-disable */
+
   static propTypes = {
+    className: PropTypes.string,
     options: PropTypes.object,
-    height: PropTypes.number,
-    width: PropTypes.number,
     backgroundColor: PropTypes.string,
     animation: PropTypes.bool,
     calculable: PropTypes.bool,
@@ -46,8 +45,11 @@ export default class Charts extends PureComponent {
   /* eslint-enable */
 
   static defaultProps = {
-    height: 400,
-    width: 300,
+    className: 'react-echarts',
+    style: {
+      width: '100%',
+      height: 400,
+    },
   };
 
   componentDidMount() {
@@ -120,7 +122,6 @@ export default class Charts extends PureComponent {
       ]);
       options = this.getChartData(options);
     }
-
     const node = this.chartInstance;
     const chart = echarts.getInstanceByDom(node);
     if (!chart) {
@@ -137,15 +138,13 @@ export default class Charts extends PureComponent {
   }
 
   render() {
-    const { width, height, style } = this.props;
+    const { className, style } = this.props;
     return (
       <div
+        style={style}
+        className={className}
         ref={ref => (this.chartInstance = ref)}
-        style={{
-          height,
-          width,
-          ...style,
-        }}
+
       >
         {this.renderChildren()}
       </div>
