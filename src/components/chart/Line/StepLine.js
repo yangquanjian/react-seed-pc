@@ -3,7 +3,7 @@
  *  折线图
  * @author maoquan(maoquan@htsc.com)
  */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import 'echarts/lib/chart/line';
 import ChartBase from '../ChartBase';
 import Charts from '../Chart';
@@ -13,7 +13,11 @@ export default class StepLine extends ChartBase {
     type: 'line',
     hasChart: true,
   }
+  static propTypes = {
+    StepLineData: PropTypes.array.isRequired,
+  }
   render() {
+    const { StepLineData } = this.props;
     const option = {
       tooltip: {
         trigger: 'axis',
@@ -39,26 +43,7 @@ export default class StepLine extends ChartBase {
       yAxis: {
         type: 'value',
       },
-      series: [
-        {
-          name: 'Step Start',
-          type: 'line',
-          step: 'start',
-          data: [120, 132, 101, 134, 90, 230, 210],
-        },
-        {
-          name: 'Step Middle',
-          type: 'line',
-          step: 'middle',
-          data: [220, 282, 201, 234, 290, 430, 410],
-        },
-        {
-          name: 'Step End',
-          type: 'line',
-          step: 'end',
-          data: [450, 432, 401, 454, 590, 530, 510],
-        },
-      ],
+      series: [...StepLineData],
     };
 
     return (
