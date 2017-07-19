@@ -3,4 +3,4 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /app
 COPY dist /app/www
 # for test, remove this line if in production
-COPY mockup /app/www
+COPY mockup /app/www/mockup/
