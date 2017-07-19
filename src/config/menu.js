@@ -11,29 +11,6 @@ const menus = [
     icon: 'laptop',
   },
   {
-    key: 'menu1',
-    name: '菜单一',
-    icon: 'user',
-  },
-  {
-    key: 'menu2',
-    name: '菜单二',
-    icon: 'camera-o',
-    clickable: false,
-    child: [
-      {
-        key: 'menu21',
-        name: '子菜单一',
-        icon: 'heart-o',
-      },
-      {
-        key: 'menu22',
-        name: '子菜单二',
-        icon: 'database',
-      },
-    ],
-  },
-  {
     key: 'charts',
     name: '图表',
     icon: 'book',
@@ -55,6 +32,11 @@ const menus = [
         icon: 'pie-chart',
       },
     ],
+  },
+  {
+    key: 'menu1',
+    name: '测试菜单',
+    icon: 'user',
   },
 ];
 

@@ -2,6 +2,8 @@
 
 基于react技术栈的种子站点, 适用于企业中后台管理系统的快速搭建。
 
+demo(云桌面环境，根据develop分支自动构建): http://168.61.5.200/
+
 ## 开发环境
 
 windows下推荐安装终端环境：[cmder.net](http://cmder.net/)
