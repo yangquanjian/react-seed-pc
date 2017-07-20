@@ -6,6 +6,7 @@
 import { routerRedux } from 'dva/router';
 
 import api from '../api';
+import { delay } from '../utils/sagaEffects';
 
 // noinspection JSAnnotator
 export default {
@@ -92,6 +93,8 @@ export default {
   effects: {
     * getList({ payload: { type = '1' } }, { call, put }) {
       const response = yield call(api.getList, { type });
+      // 模拟慢速网络
+      yield delay(1000);
       yield put({
         type: 'getListSuccess',
         payload: { response, type },

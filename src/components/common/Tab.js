@@ -4,7 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import { autobind } from 'core-decorators';
 import _ from 'lodash';
-import { Tabs } from 'antd';
+import { Tabs, Spin } from 'antd';
 
 import menuConfig from '../../config/menu';
 
@@ -24,11 +24,27 @@ function preProcess(config, parentPath = '/', result = {}) {
 
 const TAB_CONFIG = preProcess(menuConfig);
 
+// 包装当前路由内容到Loading组件内
+function WrapperedChildren({ children, loading }) {
+  return (
+    <Spin tip="正在加载" spinning={loading}>
+      { children }
+    </Spin>
+  );
+}
+
+WrapperedChildren.propTypes = {
+  children: PropTypes.node.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
+
 export default class Tab extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     location: PropTypes.object.isRequired,
     push: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    style: PropTypes.object.isRequired,
   }
 
   constructor(props) {
@@ -112,7 +128,6 @@ export default class Tab extends Component {
   @autobind
   renderTabPane(pane) {
     const { name, key, closable } = pane;
-    const { children } = this.props;
     const { activeKey } = this.state;
     return (
       <TabPane
@@ -120,7 +135,10 @@ export default class Tab extends Component {
         key={key}
         closable={closable}
       >
-        {key === activeKey ? children : null}
+        {key === activeKey
+          ? WrapperedChildren(this.props)
+          : null
+        }
       </TabPane>
     );
   }
@@ -135,7 +153,7 @@ export default class Tab extends Component {
         onEdit={this.onEdit}
         type="editable-card"
       >
-        {_.isEmpty(panes) ? this.props.children : panes.map(this.renderTabPane)}
+        {_.isEmpty(panes) ? WrapperedChildren(this.props) : panes.map(this.renderTabPane)}
       </Tabs>
     );
   }

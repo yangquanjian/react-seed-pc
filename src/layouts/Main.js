@@ -9,7 +9,6 @@ import { connect } from 'dva';
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 
-import Loading from '../components/common/Loading';
 import Tab from '../components/common/Tab';
 import { constants } from '../config';
 
@@ -76,7 +75,6 @@ export default class Main extends Component {
       useMenuPopover,
       menuPopoverVisible,
       navOpenKeys,
-      loading,
       // 方法
       switchMenuPopover,
       switchSider,
@@ -134,11 +132,8 @@ export default class Main extends Component {
           }
           <div className={styles.main}>
             <Header {...headerProps} />
-            <div className={styles.container}>
+            <div className={styles.content}>
               <Tab {...this.props} />
-              <div className={styles.content}>
-                <Loading loading={loading} />
-              </div>
             </div>
             <Footer />
           </div>
@@ -147,7 +142,3 @@ export default class Main extends Component {
     );
   }
 }
-
-
-// export default connect(({ app, loading }) => ({ app, loading: loading.models.app }))(App)
-
