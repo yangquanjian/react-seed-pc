@@ -6,7 +6,7 @@
 
 const menus = [
   {
-    key: '',
+    key: 'example',
     name: 'Home',
     icon: 'laptop',
   },

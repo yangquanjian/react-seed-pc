@@ -130,7 +130,7 @@ export default class Main extends Component {
               <aside className={classnames(styles.sider, { [styles.light]: !darkTheme })}>
                 <Sider {...siderProps} />
               </aside>
-            ) : ''
+            ) : null
           }
           <div className={styles.main}>
             <Header {...headerProps} />
