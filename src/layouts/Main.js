@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
 
 import Loading from '../components/common/Loading';
+import Tab from '../components/common/Tab';
 import { constants } from '../config';
 
 import Header from './Header';
@@ -18,7 +19,6 @@ import Sider from './Sider';
 
 import styles from './main.less';
 import '../css/skin.less';
-import Tab from '../components/example/tab';
 
 const mapStateToProps = state => ({
   ...state.app,
@@ -135,9 +135,9 @@ export default class Main extends Component {
           <div className={styles.main}>
             <Header {...headerProps} />
             <div className={styles.container}>
+              <Tab {...this.props} />
               <div className={styles.content}>
                 <Loading loading={loading} />
-                {<Tab {...this.props} />}
               </div>
             </div>
             <Footer />
