@@ -44,7 +44,6 @@ export default class Tab extends Component {
     location: PropTypes.object.isRequired,
     push: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    style: PropTypes.object.isRequired,
   }
 
   constructor(props) {
