@@ -3,22 +3,21 @@
  *  折线图
  * @author maoquan(maoquan@htsc.com)
  */
-import React, { PropTypes } from 'react';
-import 'echarts/lib/chart/line';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PropTypes, PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class LinePileup extends ChartBase {
+export default class LinePileup extends PureComponent {
+
   static propTypes = {
-    LinePileupData: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
   }
-  static defaultProps = {
-    type: 'line',
-    hasChart: true,
+
+  handleReady() {
   }
+
   render() {
-    const { LinePileupData } = this.props;
-    const lineoption = {
+    const { data } = this.props;
+    const options = {
       style: {
         width: '80%',
         height: 200,
@@ -46,10 +45,17 @@ export default class LinePileup extends ChartBase {
       yAxis: {
         type: 'value',
       },
-      series: [...LinePileupData],
+      series: [...data],
     };
     return (
-      <Charts options={lineoption} />
+      <Chart
+        onReady={this.handleReady}
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }

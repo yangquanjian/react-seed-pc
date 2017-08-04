@@ -2,29 +2,32 @@ import React, { PropTypes, PureComponent } from 'react';
 import { withRouter } from 'dva/router';
 import { connect } from 'dva';
 import { Row, Col, Card } from 'antd';
-import './home.less';
+import './chart.less';
 import Chart from '../../components/chart/index';
 
 const colProps = {
   lg: 12,
   md: 24,
 };
+
 const mapStateToProps = state => ({
-  BarWorldPeopleData: state.example.BarWorldPeopleData,
+  barWorldPeopleData: state.chart.barWorldPeopleData,
 });
+
 const mapDispatchToProps = {
   getBarWorldPeople: query => ({
-    type: 'example/getBarWorldPeople',
+    type: 'chart/getBarWorldPeople',
     payload: query || {},
   }),
 };
+
 @connect(mapStateToProps, mapDispatchToProps)
 @withRouter
 export default class BarCharts extends PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
     getBarWorldPeople: PropTypes.func.isRequired,
-    BarWorldPeopleData: PropTypes.array.isRequired,
+    barWorldPeopleData: PropTypes.array.isRequired,
   }
 
   static defaultProps = {
@@ -36,13 +39,13 @@ export default class BarCharts extends PureComponent {
   }
 
   render() {
-    const { BarWorldPeopleData } = this.props;
+    const { barWorldPeopleData } = this.props;
     return (
       <div className="content-inner">
         <Row gutter={32}>
           <Col {...colProps}>
             <Card title="世界人口总量">
-              <Chart.BarWorldPeople BarWorldPeopleData={BarWorldPeopleData} />
+              <Chart.BarWorldPeople data={barWorldPeopleData} />
             </Card>
           </Col>
           <Col {...colProps}>

@@ -2,32 +2,36 @@ import React, { PropTypes, PureComponent } from 'react';
 import { Row, Col, Card } from 'antd';
 import { connect } from 'dva';
 import { withRouter } from 'dva/router';
-import './home.less';
+
 import Chart from '../../components/chart/index';
+import './chart.less';
 
 const colProps = {
   lg: 12,
   md: 24,
 };
+
 const mapStateToProps = state => ({
-  LinePileupData: state.example.LinePileupData,
-  MultipleData: state.example.MultipleData,
-  StepLineData: state.example.StepLineData,
+  linePileupData: state.chart.linePileupData,
+  multipleData: state.chart.multipleData,
+  stepLineData: state.chart.stepLineData,
 });
+
 const mapDispatchToProps = {
   getLinePileupData: query => ({
-    type: 'example/getLinePileupData',
+    type: 'chart/getLinePileupData',
     payload: query || {},
   }),
   getMultipleXLineData: query => ({
-    type: 'example/getMultipleXLineData',
+    type: 'chart/getMultipleXLineData',
     payload: query || {},
   }),
   getStepLineData: query => ({
-    type: 'example/getStepLineData',
+    type: 'chart/getStepLineData',
     payload: query || {},
   }),
 };
+
 @connect(mapStateToProps, mapDispatchToProps)
 @withRouter
 export default class lineCharts extends PureComponent {
@@ -37,15 +41,15 @@ export default class lineCharts extends PureComponent {
     getLinePileupData: PropTypes.func.isRequired,
     getMultipleXLineData: PropTypes.func.isRequired,
     getStepLineData: PropTypes.func.isRequired,
-    LinePileupData: PropTypes.array.isRequired,
-    MultipleData: PropTypes.array.isRequired,
-    StepLineData: PropTypes.array.isRequired,
+    linePileupData: PropTypes.array.isRequired,
+    multipleData: PropTypes.array.isRequired,
+    stepLineData: PropTypes.array.isRequired,
   }
 
   static defaultProps = {
-    LinePileupData: [],
-    MultipleData: [],
-    StepLineData: [],
+    linePileupData: [],
+    multipleData: [],
+    stepLineData: [],
   }
 
   componentWillMount() {
@@ -55,23 +59,23 @@ export default class lineCharts extends PureComponent {
   }
 
   render() {
-    const { LinePileupData, MultipleData, StepLineData } = this.props;
+    const { linePileupData, multipleData, stepLineData } = this.props;
     return (
       <div className="content-inner">
         <Row gutter={32}>
           <Col {...colProps}>
             <Card title="折线图堆叠">
-              <Chart.LinePileup LinePileupData={LinePileupData} />
+              <Chart.LinePileup data={linePileupData} />
             </Card>
           </Col>
           <Col {...colProps}>
             <Card title="多X轴实例">
-              <Chart.MultipleXLine MultipleData={MultipleData} />
+              <Chart.MultipleXLine data={multipleData} />
             </Card>
           </Col>
           <Col {...colProps}>
             <Card title="Step Line">
-              <Chart.StepLine StepLineData={StepLineData} />
+              <Chart.StepLine data={stepLineData} />
             </Card>
           </Col>
         </Row>

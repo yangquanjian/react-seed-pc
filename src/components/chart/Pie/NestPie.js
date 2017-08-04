@@ -2,26 +2,19 @@
  * Created by K0240001 on 2017/7/14.
  * 嵌套饼图
  */
-import React, { PropTypes } from 'react';
-import 'echarts/lib/chart/pie';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PropTypes, PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class NestPie extends ChartBase {
-  static defaultProps ={
-    type: 'Pie',
-    hasChart: true,
-
-  }
+export default class NestPie extends PureComponent {
 
   static propTypes = {
-    PieInnerData: PropTypes.array.isRequired,
-    PieOutData: PropTypes.array.isRequired,
+    innerData: PropTypes.array.isRequired,
+    outerData: PropTypes.array.isRequired,
   }
+
   render() {
-    const { PieInnerData } = this.props;
-    const { PieOutData } = this.props;
-    const option = {
+    const { innerData, outerData } = this.props;
+    const options = {
       tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)',
@@ -48,19 +41,25 @@ export default class NestPie extends ChartBase {
               show: false,
             },
           },
-          data: [...PieInnerData],
+          data: [...innerData],
         },
         {
           name: '访问来源',
           type: 'pie',
           radius: ['40%', '55%'],
 
-          data: [...PieOutData],
+          data: [...outerData],
         },
       ],
     };
     return (
-      <Charts options={option} />
+      <Chart
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }

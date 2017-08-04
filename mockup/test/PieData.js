@@ -3,7 +3,7 @@
  */
 exports.response = function (req, res) {
     return {
-         "PieData": [
+         "pieData": [
              { "value": 335, "name": '直接访问' },
              { "value": 310, "name": '邮件营销' },
              { "value": 234, "name": '联盟广告' },

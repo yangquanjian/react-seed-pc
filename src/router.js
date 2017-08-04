@@ -16,9 +16,9 @@ import Main from './layouts/Main';
 import Test from './routes/example/Home';
 import TestDetail from './routes/example/Detail';
 import Page from './routes/example/Page';
-import lineCharts from './routes/example/LineCharts';
-import BarCharts from './routes/example/BarCharts';
-import PieCharts from './routes/example/PieCharts';
+import lineCharts from './routes/chart/LineCharts';
+import BarCharts from './routes/chart/BarCharts';
+import PieCharts from './routes/chart/PieCharts';
 
 
 const routes = ({ history }) => (// eslint-disable-line

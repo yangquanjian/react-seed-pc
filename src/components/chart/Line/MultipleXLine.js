@@ -3,23 +3,19 @@
  *  折线图
  * @author maoquan(maoquan@htsc.com)
  */
-import React, { PropTypes } from 'react';
-import 'echarts/lib/chart/line';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PropTypes, PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class MultipleXLine extends ChartBase {
+export default class MultipleXLine extends PureComponent {
+
   static propTypes = {
-    MultipleData: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
   }
-  static defaultProps = {
-    type: 'line',
-    hasChart: true,
-  }
+
   render() {
-    const { MultipleData } = this.props;
+    const { data } = this.props;
     const colors = ['#5793f3', '#d14a61', '#675bba'];
-    const lineoption = {
+    const options = {
       color: colors,
       title: {
         show: true,
@@ -86,11 +82,17 @@ export default class MultipleXLine extends ChartBase {
           type: 'value',
         },
       ],
-      series: [...MultipleData],
+      series: [...data],
     };
 
     return (
-      <Charts options={lineoption} />
+      <Chart
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }

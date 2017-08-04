@@ -1,13 +1,11 @@
-import React from 'react';
-import 'echarts/lib/chart/line';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class BarFlash extends ChartBase {
+export default class BarFlash extends PureComponent {
+
   static defaultProps = {
-    type: 'line',
-    hasChart: true,
   }
+
   render() {
     const xAxisData = [];
     const data1 = [];
@@ -67,7 +65,13 @@ export default class BarFlash extends ChartBase {
     };
 
     return (
-      <Charts options={options} />
+      <Chart
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }

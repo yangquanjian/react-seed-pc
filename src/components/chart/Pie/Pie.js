@@ -4,24 +4,17 @@
  * @author maoquan(maoquan@htsc.com)
  */
 
-import React, { PropTypes } from 'react';
-import 'echarts/lib/chart/pie';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PropTypes, PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class Pie extends ChartBase {
-  static defaultProps = {
-    type: 'Pie',
-    hasChart: true,
-
-  }
+export default class Pie extends PureComponent {
   static propTypes = {
-    PieData: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
   }
 
   render() {
-    const { PieData } = this.props;
-    const option = {
+    const { data } = this.props;
+    const options = {
       title: {
         text: '某站点用户访问来源',
         subtext: '纯属虚构',
@@ -42,7 +35,7 @@ export default class Pie extends ChartBase {
           type: 'pie',
           radius: '55%',
           center: ['50%', '60%'],
-          data: [...PieData],
+          data: [...data],
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
@@ -54,7 +47,13 @@ export default class Pie extends ChartBase {
       ],
     };
     return (
-      <Charts options={option} />
+      <Chart
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }

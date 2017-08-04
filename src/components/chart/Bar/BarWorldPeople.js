@@ -1,19 +1,17 @@
-import React, { PropTypes } from 'react';
-import 'echarts/lib/chart/line';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PropTypes, PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class BarWorldPeople extends ChartBase {
+export default class BarWorldPeople extends PureComponent {
+
   static propTypes = {
-    BarWorldPeopleData: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
+  }
 
-  }
   static defaultProps = {
-    type: 'line',
-    hasChart: true,
   }
+
   render() {
-    const { BarWorldPeopleData } = this.props;
+    const { data } = this.props;
     const options = {
       tooltip: {
         trigger: 'axis',
@@ -38,11 +36,17 @@ export default class BarWorldPeople extends ChartBase {
         type: 'category',
         data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)'],
       },
-      series: [...BarWorldPeopleData],
+      series: [...data],
     };
 
     return (
-      <Charts options={options} />
+      <Chart
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }

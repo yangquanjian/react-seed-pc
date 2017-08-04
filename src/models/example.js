@@ -14,12 +14,6 @@ export default {
   state: {
     list: [],
     detail: {},
-    LinePileupData: [],
-    MultipleData: [],
-    BarWorldPeopleData: [],
-    PieInnerData: [],
-    PieOutData: [],
-    PieData: [],
 
   },
   reducers: {
@@ -37,56 +31,6 @@ export default {
       return {
         ...state,
         detail: response.data,
-      };
-    },
-    getLinePileupDataSuccess(state, action) {
-      const { payload: { response } } = action;
-      const LinePileupData = response.data;
-      return {
-        ...state,
-        LinePileupData,
-      };
-    },
-    getMultipleXLineDataSuccess(state, action) {
-      const { payload: { response } } = action;
-      const MultipleData = response.data;
-      return {
-        ...state,
-        MultipleData,
-      };
-    },
-    getStepLineDataSuccess(state, action) {
-      const { payload: { response } } = action;
-      const StepLineData = response.data;
-      return {
-        ...state,
-        StepLineData,
-      };
-    },
-    getBarWorldPeopleSuccess(state, action) {
-      const { payload: { response } } = action;
-      const BarWorldPeopleData = response.data;
-      return {
-        ...state,
-        BarWorldPeopleData,
-      };
-    },
-    getNestPieDataSuccess(state, action) {
-      const { payload: { response } } = action;
-      const PieInnerData = response.PieInnerData;
-      const PieOutData = response.PieOutData;
-      return {
-        ...state,
-        PieInnerData,
-        PieOutData,
-      };
-    },
-    getPieDataSuccess(state, action) {
-      const { payload: { response } } = action;
-      const PieData = response.PieData;
-      return {
-        ...state,
-        PieData,
       };
     },
   },
@@ -115,49 +59,6 @@ export default {
       });
       yield put(routerRedux.goBack());
     },
-    * getLinePileupData(payload:{ }, { call, put }) {
-      const response = yield call(api.getLinePileupData);
-      yield put({
-        type: 'getLinePileupDataSuccess',
-        payload: { response },
-      });
-    },
-    * getMultipleXLineData(payload:{ }, { call, put }) {
-      const response = yield call(api.getMultipleXLineData);
-      yield put({
-        type: 'getMultipleXLineDataSuccess',
-        payload: { response },
-      });
-    },
-    * getStepLineData(payload:{ }, { call, put }) {
-      const response = yield call(api.getStepLineData);
-      yield put({
-        type: 'getStepLineDataSuccess',
-        payload: { response },
-      });
-    },
-    * getBarWorldPeople(payload:{ }, { call, put }) {
-      const response = yield call(api.getBarWorldPeopleData);
-      yield put({
-        type: 'getBarWorldPeopleSuccess',
-        payload: { response },
-      });
-    },
-    * getNestPieData(payload:{ }, { call, put }) {
-      const response = yield call(api.getNestPieData);
-      yield put({
-        type: 'getNestPieDataSuccess',
-        payload: { response },
-      });
-    },
-    * getPieData(payload:{ }, { call, put }) {
-      const response = yield call(api.getPieData);
-      yield put({
-        type: 'getPieDataSuccess',
-        payload: { response },
-      });
-    },
-
   },
   subscriptions: {},
 };

@@ -3,22 +3,18 @@
  *  折线图
  * @author maoquan(maoquan@htsc.com)
  */
-import React, { PropTypes } from 'react';
-import 'echarts/lib/chart/line';
-import ChartBase from '../ChartBase';
-import Charts from '../Chart';
+import React, { PropTypes, PureComponent } from 'react';
+import Chart from '../../common/IECharts';
 
-export default class StepLine extends ChartBase {
-  static defaultProps = {
-    type: 'line',
-    hasChart: true,
-  }
+export default class StepLine extends PureComponent {
+
   static propTypes = {
-    StepLineData: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
   }
+
   render() {
-    const { StepLineData } = this.props;
-    const option = {
+    const { data } = this.props;
+    const options = {
       tooltip: {
         trigger: 'axis',
       },
@@ -43,11 +39,17 @@ export default class StepLine extends ChartBase {
       yAxis: {
         type: 'value',
       },
-      series: [...StepLineData],
+      series: [...data],
     };
 
     return (
-      <Charts options={option} />
+      <Chart
+        option={options}
+        resizable
+        style={{
+          height: '335px',
+        }}
+      />
     );
   }
 }
