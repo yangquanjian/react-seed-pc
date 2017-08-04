@@ -4,7 +4,9 @@
  * @author maoquan(maoquan@htsc.com)
  */
 
+import logo from '../../static/img/logo.svg';
+
 export default {
-  logoSrc: 'https://t.alipayobjects.com/images/T1QUBfXo4fXXXXXXXX.png',
+  logoSrc: logo,
   logoText: '华泰证券',
 };

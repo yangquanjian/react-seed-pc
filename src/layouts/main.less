@@ -1,5 +1,8 @@
 @import "../css/variable.less";
 
+@logo-height: 50px;
+@app: app;
+
 .layout {
   position: relative;
   height: 100vh;
@@ -83,21 +86,23 @@
 
     .logo {
       text-align: center;
-      height: 40px;
-      line-height: 40px;
+      height: @logo-height;
+      line-height: @logo-height;
       cursor: pointer;
       margin: 28px 0;
       transition: @transition-ease-out;
       overflow: hidden;
 
       img {
-        width: 40px;
-        margin-right: 8px;
+        display: inline-block;
+        vertical-align: middle;
+        height: @logo-height;
+        width: @logo-height;
         transition: @transition-ease-out;
       }
 
       span {
-        vertical-align: text-bottom;
+        vertical-align: middle;
         font-size: 16px;
         text-transform: uppercase;
         display: inline-block;
@@ -206,54 +211,56 @@
   }
 }
 
-:global .ant-menu-dark {
-  color: #999;
-  background-color: #3e3e3e;
-
-  .ant-menu-submenu-title:hover,
-  .ant-menu-submenu:hover {
-    color: @primary-color;
-  }
-
-  .ant-menu-sub {
+:global .@{app} {
+  .ant-menu-dark {
     color: #999;
-  }
+    background-color: #3e3e3e;
 
-  .ant-menu-submenu-selected {
-    color: @primary-color;
-
-    &:not(.ant-menu-submenu-open) {
-      background-color: @dark-half;
+    .ant-menu-submenu-title:hover,
+    .ant-menu-submenu:hover {
+      color: @primary-color;
     }
-  }
 
-  .ant-menu-item,
-  .ant-menu-submenu-title {
-    & > a {
+    .ant-menu-sub {
       color: #999;
     }
 
-    &:hover > a {
+    .ant-menu-submenu-selected {
       color: @primary-color;
-    }
-  }
 
-  &.ant-menu-inline {
+      &:not(.ant-menu-submenu-open) {
+        background-color: @dark-half;
+      }
+    }
+
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      & > a {
+        color: #999;
+      }
+
+      &:hover > a {
+        color: @primary-color;
+      }
+    }
+
+    &.ant-menu-inline {
+      .ant-menu-item-selected {
+        background-color: @dark-half;
+      }
+    }
+
     .ant-menu-item-selected {
-      background-color: @dark-half;
-    }
-  }
-
-  .ant-menu-item-selected {
-    color: @primary-color;
-    background-color: @dark-half;
-
-    & > a {
       color: @primary-color;
-    }
-
-    &:hover {
       background-color: @dark-half;
+
+      & > a {
+        color: @primary-color;
+      }
+
+      &:hover {
+        background-color: @dark-half;
+      }
     }
   }
 }

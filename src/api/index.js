@@ -16,15 +16,15 @@ export default {
   // 保存xx详情
   saveDetail: query => api.post('/test/saveDetail', query),
     // 获取折线图堆叠数据
-  getLinePileupData: query => api.post('/test/LinePileupData', query),
+  getLinePileupData: query => api.post('/test/linePileupData', query),
     // 获取多X轴数据
-  getMultipleXLineData: query => api.post('/test/MultipleXlineData', query),
+  getMultipleXLineData: query => api.post('/test/multipleXlineData', query),
     // 获取StepLine数据
-  getStepLineData: query => api.post('/test/StepLineData', query),
+  getStepLineData: query => api.post('/test/stepLineData', query),
     // 获取BarWorldPeople数据
-  getBarWorldPeopleData: query => api.post('/test/BarWorldPeopleData', query),
+  getBarWorldPeopleData: query => api.post('/test/barWorldPeopleData', query),
     // 获取NestPieData数据
-  getNestPieData: query => api.post('/test/NestPieData', query),
+  getNestPieData: query => api.post('/test/nestPieData', query),
     // 获取PieData数据
-  getPieData: query => api.post('/test/PieData', query),
+  getPieData: query => api.post('/test/pieData', query),
 };
