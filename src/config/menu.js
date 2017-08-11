@@ -38,6 +38,16 @@ const menus = [
     name: '测试菜单',
     icon: 'user',
   },
+  {
+    key: 'standalone',
+    name: '独立模块',
+    icon: 'user',
+  },
+  {
+    key: 'standaloneDemo',
+    name: '公共模块(华泰npm源)',
+    icon: 'user',
+  },
 ];
 
 export default menus;

@@ -11,15 +11,17 @@ import {
   IndexRedirect,
 } from 'dva/router';
 
-import Main from './layouts/Main';
+// 可独立发布的公共模块开发示例
+import Standalone from './components/standalone';
 
+import Main from './layouts/Main';
 import Test from './routes/example/Home';
 import TestDetail from './routes/example/Detail';
 import Page from './routes/example/Page';
 import lineCharts from './routes/chart/LineCharts';
 import BarCharts from './routes/chart/BarCharts';
 import PieCharts from './routes/chart/PieCharts';
-
+import StandalonePage from './routes/example/Standalone';
 
 const routes = ({ history }) => (// eslint-disable-line
   <Router history={history}>
@@ -38,6 +40,8 @@ const routes = ({ history }) => (// eslint-disable-line
         <Route path="charts2" components={BarCharts} />
         <Route path="charts3" components={PieCharts} />
       </Route>
+      <Route path="standalone" component={Standalone} />
+      <Route path="standaloneDemo" component={StandalonePage} />
     </Route>
   </Router>
 );
