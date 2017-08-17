@@ -9,6 +9,7 @@ const menus = [
     key: 'example',
     name: 'Home',
     icon: 'laptop',
+    default: true,
   },
   {
     key: 'charts',
