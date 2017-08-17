@@ -11,7 +11,7 @@ const getSelectedKeys = () => {
   if (pathname === '/') {
     return _.filter(menu, item => !!item.default);
   }
-  return pathname;
+  return [pathname];
 };
 
 const topMenus = menu.map(item => item.key);
@@ -62,7 +62,7 @@ function Menus({
   // 加入当前已选择的菜单，已选择菜单的父菜单需要展开
   const selectedKeys = getSelectedKeys(location);
   const openKeys = navOpenKeys.concat(
-    `/${selectedKeys.split('/')[1]}`,
+    `/${selectedKeys[0].split('/')[1]}`,
   );
 
   const menuProps = !siderFold ? {

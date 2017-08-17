@@ -4,6 +4,8 @@
  * @author maoquan(maoquan@htsc.com)
  */
 
+import _ from 'lodash';
+
 const menus = [
   {
     key: 'example',
@@ -52,3 +54,5 @@ const menus = [
 ];
 
 export default menus;
+
+export const getDefaultMenu = () => _.find(menus, item => !!item.default);
