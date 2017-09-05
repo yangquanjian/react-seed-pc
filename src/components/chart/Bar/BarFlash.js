@@ -1,3 +1,8 @@
+/**
+ * @file components/chart/Bar/BarFlash.js
+ * @author maoquan(maoquan@htsc.com)
+ */
+
 import React, { PureComponent } from 'react';
 import Chart from '../../common/IECharts';
 

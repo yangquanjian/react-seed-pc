@@ -1,9 +1,10 @@
 /**
- * @file components/chart/Line.js
+ * @file components/chart/StepLine.js
  *  折线图
  * @author maoquan(maoquan@htsc.com)
  */
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Chart from '../../common/IECharts';
 
 export default class StepLine extends PureComponent {

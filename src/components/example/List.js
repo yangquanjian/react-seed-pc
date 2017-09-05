@@ -2,7 +2,8 @@
  * @file test/List.js
  * @author maoquan(maoquan@htsc.com)
  */
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'antd';
 
 import columns from './columns';

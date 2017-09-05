@@ -1,4 +1,11 @@
-import React, { PropTypes } from 'react';
+/**
+ * @file layouts/Sider.js
+ *  侧栏
+ * @author maoquan(maoquan@htsc.com)
+ */
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon, Switch } from 'antd';
 
 import { constants } from '../config';

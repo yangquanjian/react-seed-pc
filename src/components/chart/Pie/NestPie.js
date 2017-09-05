@@ -1,8 +1,10 @@
 /**
- * Created by K0240001 on 2017/7/14.
- * 嵌套饼图
+ * @file components/chart/Pie/NestPie.js
+ *  嵌套饼图
+ * @author maoquan(maoquan@htsc.com)
  */
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Chart from '../../common/IECharts';
 
 export default class NestPie extends PureComponent {

@@ -4,8 +4,9 @@
  * @author maoquan(maoquan@htsc.com)
  */
 
-import React, { PropTypes, PureComponent } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'dva';
 
 import List from '../../components/example/List';
 import './home.less';

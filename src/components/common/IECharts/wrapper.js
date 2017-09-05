@@ -4,8 +4,8 @@
  * @description copy别人的然后进行修改
  */
 
-import React, { PropTypes, PureComponent } from 'react';
-// import ReactDOM from 'react-dom';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { autobind } from 'core-decorators';
 import _ from 'lodash';
 import Resize from 'element-resize-detector';

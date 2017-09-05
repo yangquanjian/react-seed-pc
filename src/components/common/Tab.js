@@ -1,7 +1,11 @@
 /**
- * Created by K0240001 on 2017/7/5.
+ * @file components/common/Tab.js
+ *  切换切换用tab,具体展示的页面使用路由控制
+ * @author maoquan(maoquan@htsc.com)
  */
-import React, { Component, PropTypes } from 'react';
+
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { autobind } from 'core-decorators';
 import _ from 'lodash';
 import { Tabs, Spin } from 'antd';
@@ -38,7 +42,7 @@ WrapperedChildren.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-export default class Tab extends Component {
+export default class Tab extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     location: PropTypes.object.isRequired,
@@ -57,7 +61,11 @@ export default class Tab extends Component {
     // 默认tab必须得出现
     if (!_.find(panes, item => item.key === indexMenu.key)) {
       panes = [
-        { ...indexMenu, closable: false },
+        {
+          ...indexMenu,
+          closable: false,
+          path: `/${indexMenu.key}`,
+        },
         ...panes,
       ];
     }

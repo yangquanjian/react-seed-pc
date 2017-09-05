@@ -1,4 +1,11 @@
-import React, { PropTypes, PureComponent } from 'react';
+/**
+ * @file routes/chart/LineCharts.js
+ *  折线图页面
+ * @author maoquan(maoquan@htsc.com)
+ */
+
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, Card } from 'antd';
 import { connect } from 'dva';
 import { withRouter } from 'dva/router';

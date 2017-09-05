@@ -1,10 +1,11 @@
 /**
- * @file components/chart/Pie.js
+ * @file components/chart/Pie/Pie.js
  *  饼图
  * @author maoquan(maoquan@htsc.com)
  */
 
-import React, { PropTypes, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Chart from '../../common/IECharts';
 
 export default class Pie extends PureComponent {

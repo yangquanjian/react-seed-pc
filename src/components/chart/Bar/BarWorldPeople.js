@@ -1,4 +1,10 @@
-import React, { PropTypes, PureComponent } from 'react';
+/**
+ * @file components/chart/Bar/BarWorldPeople.js
+ * @author maoquan(maoquan@htsc.com)
+ */
+
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Chart from '../../common/IECharts';
 
 export default class BarWorldPeople extends PureComponent {

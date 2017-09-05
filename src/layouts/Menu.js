@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Menu, Icon } from 'antd';
 import { Link } from 'dva/router';
 import _ from 'lodash';
@@ -6,10 +7,13 @@ import _ from 'lodash';
 import { menu } from '../config';
 
 // 当前展开的菜单项
-const getSelectedKeys = () => {
+const getSelectedKeys = (location) => {
   const { pathname } = location;
   if (pathname === '/') {
-    return _.filter(menu, item => !!item.default);
+    const defaultItems = _.filter(menu, item => !!item.default);
+    if (!_.isEmpty(defaultItems)) {
+      return defaultItems.map(item => `/${item.key}`);
+    }
   }
   return [pathname];
 };
