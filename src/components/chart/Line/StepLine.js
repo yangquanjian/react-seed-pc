@@ -5,12 +5,19 @@
  */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import Chart from '../../common/IECharts';
 
 export default class StepLine extends PureComponent {
 
   static propTypes = {
     data: PropTypes.array.isRequired,
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const { data } = nextProps;
+    return !_.isEqual(data, this.props.data);
   }
 
   render() {
@@ -40,8 +47,12 @@ export default class StepLine extends PureComponent {
       yAxis: {
         type: 'value',
       },
-      series: [...data],
+      series: data,
     };
+
+    if (_.isEmpty(data)) {
+      return null;
+    }
 
     return (
       <Chart

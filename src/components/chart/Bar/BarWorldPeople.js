@@ -5,6 +5,8 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import Chart from '../../common/IECharts';
 
 export default class BarWorldPeople extends PureComponent {
@@ -42,8 +44,12 @@ export default class BarWorldPeople extends PureComponent {
         type: 'category',
         data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)'],
       },
-      series: [...data],
+      series: data,
     };
+
+    if (_.isEmpty(data)) {
+      return null;
+    }
 
     return (
       <Chart

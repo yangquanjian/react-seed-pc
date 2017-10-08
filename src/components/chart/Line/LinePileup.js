@@ -5,6 +5,8 @@
  */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import Chart from '../../common/IECharts';
 
 export default class LinePileup extends PureComponent {
@@ -46,8 +48,13 @@ export default class LinePileup extends PureComponent {
       yAxis: {
         type: 'value',
       },
-      series: [...data],
+      series: data,
     };
+
+    if (_.isEmpty(data)) {
+      return null;
+    }
+
     return (
       <Chart
         onReady={this.handleReady}

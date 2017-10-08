@@ -5,6 +5,8 @@
  */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import Chart from '../../common/IECharts';
 
 export default class NestPie extends PureComponent {
@@ -43,17 +45,22 @@ export default class NestPie extends PureComponent {
               show: false,
             },
           },
-          data: [...innerData],
+          data: innerData,
         },
         {
           name: '访问来源',
           type: 'pie',
           radius: ['40%', '55%'],
 
-          data: [...outerData],
+          data: outerData,
         },
       ],
     };
+
+    if (_.isEmpty(innerData) && _.isEmpty(outerData)) {
+      return null;
+    }
+
     return (
       <Chart
         option={options}

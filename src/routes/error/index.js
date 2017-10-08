@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-export function NotFoundPage() {
+export function NotFound() {
   return (
     <article>
       <h1>
@@ -16,7 +16,7 @@ export function NotFoundPage() {
   );
 }
 
-export function PermissonDeniedPage() {
+export function PermissonDenied() {
   return (
     <article>
       <h1>
