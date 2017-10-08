@@ -9,8 +9,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'dva/router';
 import { connect } from 'dva';
 import { Row, Col, Card } from 'antd';
+
+import Chart from '../../components/chart';
 import './chart.less';
-import Chart from '../../components/chart/index';
 
 const colProps = {
   lg: 12,
@@ -18,41 +19,26 @@ const colProps = {
 };
 
 const mapStateToProps = state => ({
-  barWorldPeopleData: state.chart.barWorldPeopleData,
+  data: state.barChart.data,
 });
 
-const mapDispatchToProps = {
-  getBarWorldPeople: query => ({
-    type: 'chart/getBarWorldPeople',
-    payload: query || {},
-  }),
-};
-
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps)
 @withRouter
 export default class BarCharts extends PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
-    getBarWorldPeople: PropTypes.func.isRequired,
-    barWorldPeopleData: PropTypes.array.isRequired,
-  }
-
-  static defaultProps = {
-    BarWorldPeople: [],
-  }
-
-  componentWillMount() {
-    this.props.getBarWorldPeople();
+    getData: PropTypes.func.isRequired,
+    data: PropTypes.array.isRequired,
   }
 
   render() {
-    const { barWorldPeopleData } = this.props;
+    const { data } = this.props;
     return (
       <div className="content-inner">
         <Row gutter={32}>
           <Col {...colProps}>
             <Card title="世界人口总量">
-              <Chart.BarWorldPeople data={barWorldPeopleData} />
+              <Chart.BarWorldPeople data={data} />
             </Card>
           </Col>
           <Col {...colProps}>

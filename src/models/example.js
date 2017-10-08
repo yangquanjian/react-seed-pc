@@ -3,6 +3,7 @@
  * @author maoquan(maoquan@htsc.com)
  */
 
+import pathToRegexp from 'path-to-regexp';
 import { routerRedux } from 'dva/router';
 
 import api from '../api';
@@ -60,5 +61,17 @@ export default {
       yield put(routerRedux.goBack());
     },
   },
-  subscriptions: {},
+  subscriptions: {
+    setup({ dispatch, history }) {
+      history.listen(({ pathname }) => {
+        const match = pathToRegexp('/example/detail/:id').exec(pathname);
+        if (match) {
+          dispatch({
+            type: 'getDetail',
+            payload: { id: match[1] },
+          });
+        }
+      });
+    },
+  },
 };
