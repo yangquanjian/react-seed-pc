@@ -6,6 +6,8 @@
 
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 import Chart from '../../common/IECharts';
 
 export default class Pie extends PureComponent {
@@ -36,7 +38,7 @@ export default class Pie extends PureComponent {
           type: 'pie',
           radius: '55%',
           center: ['50%', '60%'],
-          data: [...data],
+          data,
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
@@ -47,6 +49,11 @@ export default class Pie extends PureComponent {
         },
       ],
     };
+
+    if (_.isEmpty(data)) {
+      return null;
+    }
+
     return (
       <Chart
         option={options}

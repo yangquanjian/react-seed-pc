@@ -4,6 +4,7 @@
  */
 
 import React, { PureComponent } from 'react';
+
 import Chart from '../../common/IECharts';
 
 export default class BarFlash extends PureComponent {

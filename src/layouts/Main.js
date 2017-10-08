@@ -4,73 +4,21 @@
  */
 
 import React, { PureComponent } from 'react';
-import {
-  Switch,
-  Route,
-  Redirect,
-  withRouter,
-  routerRedux,
-} from 'dva/router';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Helmet } from 'react-helmet';
 import classnames from 'classnames';
-import _ from 'lodash';
+import { routerRedux, withRouter } from 'dva/router';
 
 import Tab from '../components/common/Tab';
 import { constants } from '../config';
-import menuConfig from '../config/menu';
 
 import Header from './Header';
 import Footer from './Footer';
 import Sider from './Sider';
 
-import Test from '../routes/example/Home';
-import TestDetail from '../routes/example/Detail';
-import Page from '../routes/example/Page';
-import LineCharts from '../routes/chart/LineCharts';
-import BarCharts from '../routes/chart/BarCharts';
-import PieCharts from '../routes/chart/PieCharts';
-
 import styles from './main.less';
 import '../css/skin.less';
-
-// 默认index,从菜单配置中取
-const indexMenu = _.find(menuConfig, item => !!item.default);
-
-const Router = ({ match }) => (
-  <Switch>
-    <Route exact path={`${match.path}example`} component={Test} />
-    <Route path={`${match.path}detail/:id`} component={TestDetail} />
-    <Route path={`${match.path}menu:id`} component={Page} />
-    <Route
-      path={`${match.path}charts`}
-      render={
-        ({ match: chartMatch }) => (
-          <Switch>
-            <Route
-              path={`${chartMatch.path}/charts1`}
-              component={LineCharts}
-            />
-            <Route
-              path={`${chartMatch.path}/charts2`}
-              component={BarCharts}
-            />
-            <Route
-              path={`${chartMatch.path}/charts3`}
-              component={PieCharts}
-            />
-          </Switch>
-        )
-      }
-    />
-    <Redirect to={indexMenu.key} />
-  </Switch>
-);
-
-Router.propTypes = {
-  match: PropTypes.object.isRequired,
-};
 
 const mapStateToProps = state => ({
   ...state.app,
@@ -99,6 +47,7 @@ const mapDispatchToProps = {
 export default class Main extends PureComponent {
 
   static propTypes = {
+    children: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     menuPopoverVisible: PropTypes.bool.isRequired,
@@ -122,8 +71,8 @@ export default class Main extends PureComponent {
 
   render() {
     const {
+      children,
       location,
-      match,
       loading,
       siderFold,
       darkTheme,
@@ -191,7 +140,7 @@ export default class Main extends PureComponent {
                 location={location}
                 push={push}
                 loading={loading}
-              >{Router({ match })}</Tab>
+              >{children}</Tab>
             </div>
             <Footer />
           </div>

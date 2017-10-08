@@ -16,10 +16,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  getDetail: query => ({
-    type: 'example/getDetail',
-    payload: query || {},
-  }),
   save: query => ({
     type: 'example/save',
     payload: query || {},
@@ -31,19 +27,12 @@ const mapDispatchToProps = {
 export default class Profile extends PureComponent {
 
   static propTypes = {
-    getDetail: PropTypes.func.isRequired,
     detail: PropTypes.object,
     save: PropTypes.func.isRequired,
-    routeParams: PropTypes.object.isRequired,
   }
 
   static defaultProps = {
     detail: {},
-  }
-
-  componentWillMount() {
-    const { routeParams: { id } } = this.props;
-    this.props.getDetail({ id });
   }
 
   render() {
