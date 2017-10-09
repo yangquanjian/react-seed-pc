@@ -80,7 +80,7 @@ function Menus({
       mode={siderFold ? 'vertical' : 'inline'}
       theme={darkTheme ? 'dark' : 'light'}
       onClick={handleClickNavMenu}
-      defaultSelectedKeys={selectedKeys}
+      selectedKeys={selectedKeys}
     >
       {menuItems}
     </Menu>

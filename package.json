@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "antd": "^2.12.4",
+    "antd": "^2.13.4",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "core-decorators": "^0.15.0",
