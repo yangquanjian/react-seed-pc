@@ -27,7 +27,6 @@ const mapStateToProps = state => ({
 export default class BarCharts extends PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
-    getData: PropTypes.func.isRequired,
     data: PropTypes.array.isRequired,
   }
 

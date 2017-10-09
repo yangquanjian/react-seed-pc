@@ -4,7 +4,7 @@
  * @description copy别人的然后进行修改
  */
 
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { autobind } from 'core-decorators';
 import _ from 'lodash';
@@ -12,7 +12,7 @@ import Resize from 'element-resize-detector';
 
 
 function wrapECharts(ECharts) {
-  class IECharts extends PureComponent {
+  class IECharts extends Component {
 
     static propTypes = {
       className: PropTypes.string,
@@ -57,10 +57,6 @@ function wrapECharts(ECharts) {
       };
     }
 
-    // componentWillMount() {
-      // const that = this;
-      // console.log('componentWillMount', that.props, that.state);
-    // }
     componentDidMount() {
       this.myInit();
     }
@@ -74,6 +70,7 @@ function wrapECharts(ECharts) {
         }
       }
     }
+
     shouldComponentUpdate(nextProps) {
       return (!this.state.instance
         || !_.isEqual(nextProps.option, this.props.option)
